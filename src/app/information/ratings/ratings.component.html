@@ -13,8 +13,24 @@
         </tr>
     </thead>
     <tbody>
+        <tr *ngFor="let rating of ratings">
+            <td>{{ rating.semester }}</td>
+            <td>{{ rating.subject }}</td>
+            <td>{{ rating.usefulness | number : "1.2-2" }}</td>
+            <td>{{ rating.feasibility | number : "1.2-2" }}</td>
+            <td>{{ rating.diction | number : "1.2-2" }}</td>
+            <td>{{ rating.preparedness | number : "1.2-2" }}</td>
+            <td>{{ rating.helpfulness | number : "1.2-2" }}</td>
+            <td>{{ rating.raters }}</td>
+        </tr>
         <tr>
-            
+            <td colspan="2">overall</td>
+            <td>{{ overall.usefulness | number : "1.2-2" }}</td>
+            <td>{{ overall.feasibility | number : "1.2-2" }}</td>
+            <td>{{ overall.diction | number : "1.2-2" }}</td>
+            <td>{{ overall.preparedness | number : "1.2-2" }}</td>
+            <td>{{ overall.helpfulness | number : "1.2-2" }}</td>
+            <td>{{ overall.raters }}</td>
         </tr>
     </tbody>
 </table>

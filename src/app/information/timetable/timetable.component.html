@@ -1,19 +1,48 @@
-<table>
-    <caption>timetable</caption>
-    <thead>
-        <tr>
-            <th>monday</th>
-            <th>tuesday</th>
-            <th>wednesday</th>
-            <th>thursday</th>
-            <th>friday</th>
-            <th>saturday</th>
-            <th>sunday</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            
-        </tr>
-    </tbody>
-</table>
+<div>
+    <h2>timetable</h2>
+    <table *ngIf="timetable && timetable.monday">
+        <caption>monday</caption>
+        <tbody>
+            <tr *ngFor="let entry of timetable.monday">
+                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
+                <td>{{ entry.subject }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="timetable && timetable.tuesday">
+        <caption>tuesday</caption>
+        <tbody>
+            <tr *ngFor="let entry of timetable.tuesday">
+                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
+                <td>{{ entry.subject }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="timetable && timetable.wednesday">
+        <caption>wednesday</caption>
+        <tbody>
+            <tr *ngFor="let entry of timetable.wednesday">
+                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
+                <td>{{ entry.subject }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="timetable && timetable.thursday">
+        <caption>thursday</caption>
+        <tbody>
+            <tr *ngFor="let entry of timetable.thursday">
+                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
+                <td>{{ entry.subject }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="timetable && timetable.friday">
+        <caption>friday</caption>
+        <tbody>
+            <tr *ngFor="let entry of timetable.friday">
+                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
+                <td>{{ entry.subject }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

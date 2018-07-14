@@ -1,11 +1,18 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { EducationComponent } from "./education.component";
+import { CatalogueComponent } from "./catalogue/catalogue.component";
 
 const educationRoutes: Routes = [
     {
         path: "education",
-        component: EducationComponent
+        component: EducationComponent,
+        children: [
+            {
+                path: "catalogue",
+                component: CatalogueComponent
+            }
+        ]
     }
 ];
 

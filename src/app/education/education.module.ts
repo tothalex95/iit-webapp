@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 
 import { EducationRoutingModule } from "./education-routing.module";
 import { EducationComponent } from "./education.component";
+import { CatalogueComponent } from "./catalogue/catalogue.component";
 
 @NgModule({
     imports: [
@@ -10,7 +11,8 @@ import { EducationComponent } from "./education.component";
         EducationRoutingModule
     ],
     declarations: [
-        EducationComponent
+        EducationComponent,
+        CatalogueComponent
     ]
 })
 export class EducationModule {

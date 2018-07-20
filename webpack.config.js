@@ -44,5 +44,5 @@ module.exports = function WebpackConfiguration() {
                 sourceMap: true
             })
         ]
-    }
-}
+    };
+};

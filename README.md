@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/tothalex95/iit-webapp.svg?branch=master)](https://travis-ci.org/tothalex95/iit-webapp)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/24c05e687c9e4572b6de11ed06874aa7)](https://www.codacy.com/app/tothalex95/iit-webapp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tothalex95/iit-webapp&amp;utm_campaign=Badge_Grade)
 
 # IIT Webapp Angular Project
 

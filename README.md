@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tothalex95/iit-webapp.svg?branch=master)](https://travis-ci.org/tothalex95/iit-webapp)
+
 # IIT Webapp Angular Project
 
 It's a hobby project using [Angular 6](https://angular.io/). I started to develop this application in order to replace the one, I previously used as my university website, written in [AngularJS](https://angularjs.org/).

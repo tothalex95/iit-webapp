@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { EducationRoutingModule } from "./education-routing.module";
 import { EducationComponent } from "./education.component";
 import { CatalogueComponent } from "./catalogue/catalogue.component";
+import { CoursesComponent } from "./courses/courses.component";
 
 import { MaterialDesignModule } from "../common/material-design.module";
 
@@ -15,7 +16,8 @@ import { MaterialDesignModule } from "../common/material-design.module";
     ],
     declarations: [
         EducationComponent,
-        CatalogueComponent
+        CatalogueComponent,
+        CoursesComponent
     ]
 })
 export class EducationModule {

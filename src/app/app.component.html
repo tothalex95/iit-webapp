@@ -1,7 +1,22 @@
-<p>this is app component</p>
-<nav>
-    <a routerLink="home">Home</a>
-    <a routerLink="information">Information</a>
-    <a routerLink="education">Education</a>
-</nav>
-<router-outlet></router-outlet>
+<div>
+    <!-- Toolbar -->
+    <mat-toolbar color="primary">
+        <span>Alex Toth's Website</span>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+        <!-- Sidenav -->
+        <mat-sidenav mode="side" opened>
+            <mat-nav-list>
+                <a mat-list-item routerLink="home">Home</a>
+                <a mat-list-item routerLink="information">Information</a>
+                <a mat-list-item routerLink="education">Education</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <!-- Content -->
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

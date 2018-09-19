@@ -6,6 +6,10 @@
     </mat-select>
 </mat-form-field>
 
+<mat-form-field>
+    <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="neptunCode" (input)="onNeptunCodeChange()">
+</mat-form-field>
+
 <table *ngIf="catalogue" mat-table [dataSource]="catalogue">
     <!-- Neptun Code column -->
     <ng-container matColumnDef="neptunCode">

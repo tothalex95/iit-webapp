@@ -19,9 +19,11 @@ export class CatalogueComponent implements OnInit {
         "plusPoints"
     ];
 
+    readonly courses: Course[] = COURSES;
+
     catalogue: MatTableDataSource<CatalogueEntry>;
 
-    readonly courses: Course[] = COURSES;
+    neptunCode: string;
 
     constructor(private catalogueService: CatalogueService) { }
 
@@ -33,6 +35,18 @@ export class CatalogueComponent implements OnInit {
         this.catalogueService.getCatalogue(course.subject, course.year)
             .subscribe((catalogue: Catalogue) => {
                 this.catalogue = new MatTableDataSource(catalogue.catalogueEntries);
+
+                this.catalogue.filterPredicate = (catalogueEntry: CatalogueEntry, neptunCode: string) => catalogueEntry.neptunCode.startsWith(neptunCode);
             });
+    }
+
+    onNeptunCodeChange(): void {
+        this.neptunCode = this.neptunCode.toUpperCase();
+
+        this.filterCatalogueEntries();
+    }
+
+    private filterCatalogueEntries(): void {
+        this.catalogue.filter = this.neptunCode;
     }
 }

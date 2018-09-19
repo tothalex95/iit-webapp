@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
 import { EducationRoutingModule } from "./education-routing.module";
 import { EducationComponent } from "./education.component";
@@ -11,6 +12,7 @@ import { MaterialDesignModule } from "../common/material-design.module";
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         EducationRoutingModule,
         MaterialDesignModule
     ],
@@ -20,8 +22,4 @@ import { MaterialDesignModule } from "../common/material-design.module";
         CoursesComponent
     ]
 })
-export class EducationModule {
-    constructor() {
-        
-    }
-}
+export class EducationModule { }

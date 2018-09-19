@@ -5,6 +5,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
     imports: [
@@ -12,13 +13,15 @@ import { MatToolbarModule } from "@angular/material/toolbar";
         MatTableModule,
         MatSidenavModule,
         MatListModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatSelectModule
     ],
     exports: [
         MatTableModule,
         MatSidenavModule,
         MatListModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatSelectModule
     ]
 })
 export class MaterialDesignModule { }

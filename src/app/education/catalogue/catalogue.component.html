@@ -10,47 +10,55 @@
     <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="neptunCode" (input)="onNeptunCodeChange()">
 </mat-form-field>
 
-<table *ngIf="catalogue" mat-table [dataSource]="catalogue">
+<mat-table *ngIf="catalogue" [dataSource]="catalogue">
+    <!-- Index column -->
+    <ng-container matColumnDef="index">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let entry; let i = index;">
+            {{ i + 1 }}
+        </mat-cell>
+    </ng-container>
+
     <!-- Neptun Code column -->
     <ng-container matColumnDef="neptunCode">
-        <th mat-header-cell *matHeaderCellDef>Neptun Code</th>
-        <td mat-cell *matCellDef="let entry">
+        <mat-header-cell *matHeaderCellDef>Neptun Code</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
             {{ entry.neptunCode }}
-        </td>
+        </mat-cell>
     </ng-container>
 
     <!-- Presence column -->
     <ng-container matColumnDef="presence">
-        <th mat-header-cell *matHeaderCellDef>Presence</th>
-        <td mat-cell *matCellDef="let entry">
+        <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
             {{ entry.presence }}
-        </td>
+        </mat-cell>
     </ng-container>
 
     <!-- Homeworks column-->
     <ng-container matColumnDef="homeworks">
-        <th mat-header-cell *matHeaderCellDef>Homeworks</th>
-        <td mat-cell *matCellDef="let entry">
+        <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
             {{ entry.hw1 && entry.hw2 }}
-        </td>
+        </mat-cell>
     </ng-container>
 
     <!-- Practice column -->
     <ng-container matColumnDef="practice">
-        <th mat-header-cell *matHeaderCellDef>Practice</th>
-        <td mat-cell *matCellDef="let entry">
+        <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
             {{ entry.presence >= entry.max * 0.7 && entry.hw1 && entry.hw2 }}
-        </td>
+        </mat-cell>
     </ng-container>
 
     <!-- Plus points column -->
     <ng-container matColumnDef="plusPoints">
-        <th mat-header-cell *matHeaderCellDef>Plus points</th>
-        <td mat-cell *matCellDef="let entry">
+        <mat-header-cell *matHeaderCellDef>Plus points</mat-header-cell>
+        <mat-cell *matCellDef="let entry">
             {{ entry.plusPoint }}
-        </td>
+        </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
+</mat-table>

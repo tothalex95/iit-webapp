@@ -12,6 +12,7 @@ import { COURSES } from "./courses";
 })
 export class CatalogueComponent implements OnInit {
     readonly displayedColumns: string[] = [
+        "index",
         "neptunCode",
         "presence",
         "homeworks",

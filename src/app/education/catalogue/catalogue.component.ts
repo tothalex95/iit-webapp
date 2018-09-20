@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
+import { MatPaginator } from "@angular/material/paginator";
 
 import { Catalogue } from "./catalogue";
 import { CatalogueEntry } from "./catalogue-entry";
@@ -22,9 +23,13 @@ export class CatalogueComponent implements OnInit {
 
     readonly courses: Course[] = COURSES;
 
-    catalogue: MatTableDataSource<CatalogueEntry>;
+    readonly pageSizeOptions: number[] = [10, 25, 50];
 
     neptunCode: string;
+
+    catalogue: MatTableDataSource<CatalogueEntry>;
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private catalogueService: CatalogueService) { }
 
@@ -38,6 +43,8 @@ export class CatalogueComponent implements OnInit {
                 this.catalogue = new MatTableDataSource(catalogue.catalogueEntries);
 
                 this.catalogue.filterPredicate = (catalogueEntry: CatalogueEntry, neptunCode: string) => catalogueEntry.neptunCode.startsWith(neptunCode);
+
+                this.catalogue.paginator = this.paginator;
             });
     }
 

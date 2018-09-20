@@ -1,3 +1,4 @@
+<!-- Course selection -->
 <mat-form-field>
     <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)">
         <mat-option *ngFor="let course of courses" [value]="course">
@@ -6,6 +7,7 @@
     </mat-select>
 </mat-form-field>
 
+<!-- Neptun Code input field for filtering-->
 <mat-form-field>
     <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="neptunCode" (input)="onNeptunCodeChange()">
 </mat-form-field>
@@ -62,3 +64,6 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
 </mat-table>
+
+<!-- Paginator -->
+<mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>

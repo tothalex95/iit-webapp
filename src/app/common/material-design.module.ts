@@ -10,6 +10,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
     imports: [
@@ -22,7 +24,9 @@ import { MatButtonModule } from "@angular/material/button";
         MatInputModule,
         MatPaginatorModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTabsModule,
+        MatExpansionModule
     ],
     exports: [
         MatTableModule,
@@ -33,7 +37,9 @@ import { MatButtonModule } from "@angular/material/button";
         MatInputModule,
         MatPaginatorModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTabsModule,
+        MatExpansionModule
     ]
 })
 export class MaterialDesignModule { }

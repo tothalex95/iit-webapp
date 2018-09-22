@@ -6,6 +6,7 @@ import { EducationRoutingModule } from "./education-routing.module";
 import { EducationComponent } from "./education.component";
 import { CatalogueComponent } from "./catalogue/catalogue.component";
 import { CoursesComponent } from "./courses/courses.component";
+import { CoursesService } from "./courses/courses.service";
 
 import { MaterialDesignModule } from "../common/material-design.module";
 
@@ -20,6 +21,9 @@ import { MaterialDesignModule } from "../common/material-design.module";
         EducationComponent,
         CatalogueComponent,
         CoursesComponent
+    ],
+    providers: [
+        CoursesService
     ]
 })
 export class EducationModule { }

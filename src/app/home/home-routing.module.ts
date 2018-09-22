@@ -17,8 +17,4 @@ const homeRoutes: Routes = [
         RouterModule
     ]
 })
-export class HomeRoutingModule {
-    constructor() {
-
-    }
-}
+export class HomeRoutingModule { }

@@ -5,8 +5,8 @@ export class CatalogueEntry {
     presence: number;
     max: number;
     presenceDetails: Array<PresenceDetail>;
-    hw1: boolean;
-    hw2: boolean;
+    hw1: number;
+    hw2: number;
     fulfilled: boolean;
     plusPoint: number;
 }

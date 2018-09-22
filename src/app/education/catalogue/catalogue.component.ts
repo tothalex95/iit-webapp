@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
 
 import { Catalogue } from "./catalogue";
 import { CatalogueEntry } from "./catalogue-entry";
@@ -31,6 +32,8 @@ export class CatalogueComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
+    @ViewChild(MatSort) sort: MatSort;
+
     constructor(private catalogueService: CatalogueService) { }
 
     ngOnInit(): void {
@@ -45,6 +48,8 @@ export class CatalogueComponent implements OnInit {
                 this.catalogue.filterPredicate = (catalogueEntry: CatalogueEntry, neptunCode: string) => catalogueEntry.neptunCode.startsWith(neptunCode);
 
                 this.catalogue.paginator = this.paginator;
+
+                this.catalogue.sort = this.sort;
             });
     }
 

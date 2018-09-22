@@ -1,69 +1,78 @@
-<!-- Course selection -->
-<mat-form-field>
-    <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)">
-        <mat-option *ngFor="let course of courses" [value]="course">
-            {{ course.title }}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Catalogue</mat-card-title>
+    </mat-card-header>
 
-<!-- Neptun Code input field for filtering-->
-<mat-form-field>
-    <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="neptunCode" (input)="onNeptunCodeChange()">
-</mat-form-field>
+    <mat-card-content>
+        <!-- Course selection -->
+        <mat-form-field>
+            <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)">
+                <mat-option *ngFor="let course of courses" [value]="course">
+                    {{ course.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-<mat-table *ngIf="catalogue" [dataSource]="catalogue">
-    <!-- Index column -->
-    <ng-container matColumnDef="index">
-        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-        <mat-cell *matCellDef="let entry; let i = index;">
-            {{ i + 1 }}
-        </mat-cell>
-    </ng-container>
+        <!-- Neptun Code input field for filtering-->
+        <mat-form-field>
+            <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="neptunCode" (input)="onNeptunCodeChange()">
+        </mat-form-field>
 
-    <!-- Neptun Code column -->
-    <ng-container matColumnDef="neptunCode">
-        <mat-header-cell *matHeaderCellDef>Neptun Code</mat-header-cell>
-        <mat-cell *matCellDef="let entry">
-            {{ entry.neptunCode }}
-        </mat-cell>
-    </ng-container>
+        <mat-table *ngIf="catalogue" [dataSource]="catalogue" matSort>
+            <!-- Index column -->
+            <ng-container matColumnDef="index">
+                <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+                <mat-cell *matCellDef="let entry; let i = index;">
+                    {{ i + 1 }}
+                </mat-cell>
+            </ng-container>
 
-    <!-- Presence column -->
-    <ng-container matColumnDef="presence">
-        <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
-        <mat-cell *matCellDef="let entry">
-            {{ entry.presence }}
-        </mat-cell>
-    </ng-container>
+            <!-- Neptun Code column -->
+            <ng-container matColumnDef="neptunCode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Neptun Code</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.neptunCode }}
+                </mat-cell>
+            </ng-container>
 
-    <!-- Homeworks column-->
-    <ng-container matColumnDef="homeworks">
-        <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
-        <mat-cell *matCellDef="let entry">
-            {{ entry.hw1 && entry.hw2 }}
-        </mat-cell>
-    </ng-container>
+            <!-- Presence column -->
+            <ng-container matColumnDef="presence">
+                <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.presence }}
+                </mat-cell>
+            </ng-container>
 
-    <!-- Practice column -->
-    <ng-container matColumnDef="practice">
-        <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
-        <mat-cell *matCellDef="let entry">
-            {{ entry.presence >= entry.max * 0.7 && entry.hw1 && entry.hw2 }}
-        </mat-cell>
-    </ng-container>
+            <!-- Homeworks column-->
+            <ng-container matColumnDef="homeworks">
+                <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.hw1 && entry.hw2 }}
+                </mat-cell>
+            </ng-container>
 
-    <!-- Plus points column -->
-    <ng-container matColumnDef="plusPoints">
-        <mat-header-cell *matHeaderCellDef>Plus points</mat-header-cell>
-        <mat-cell *matCellDef="let entry">
-            {{ entry.plusPoint }}
-        </mat-cell>
-    </ng-container>
+            <!-- Practice column -->
+            <ng-container matColumnDef="practice">
+                <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.presence >= entry.max * 0.7 && entry.hw1 && entry.hw2 }}
+                </mat-cell>
+            </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
-</mat-table>
+            <!-- Plus points column -->
+            <ng-container matColumnDef="plusPoints">
+                <mat-header-cell *matHeaderCellDef>Plus points</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.plusPoint }}
+                </mat-cell>
+            </ng-container>
 
-<!-- Paginator -->
-<mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
+        </mat-table>
+
+        <!-- Paginator -->
+        <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+</mat-card>

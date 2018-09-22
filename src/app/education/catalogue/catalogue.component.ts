@@ -3,7 +3,6 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 
-import { Catalogue } from "./catalogue";
 import { CatalogueEntry } from "./catalogue-entry";
 import { CatalogueService } from "./catalogue.service";
 import { Course } from "./course";
@@ -42,8 +41,8 @@ export class CatalogueComponent implements OnInit {
 
     loadCatalogue(course: Course): void {
         this.catalogueService.getCatalogue(course.subject, course.year)
-            .subscribe((catalogue: Catalogue) => {
-                this.catalogue = new MatTableDataSource(catalogue.catalogueEntries);
+            .subscribe((catalogue: Array<CatalogueEntry>) => {
+                this.catalogue = new MatTableDataSource(catalogue);
 
                 this.catalogue.filterPredicate = (catalogueEntry: CatalogueEntry, neptunCode: string) => catalogueEntry.neptunCode.startsWith(neptunCode);
 

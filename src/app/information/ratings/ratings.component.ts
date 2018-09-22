@@ -6,6 +6,17 @@ import { Rating } from "./rating";
     templateUrl: "./ratings.component.html"
 })
 export class RatingsComponent implements OnInit {
+    readonly displayedColumns: string[] = [
+        "semester",
+        "subject",
+        "usefulness",
+        "feasibility",
+        "diction",
+        "preparedness",
+        "helpfulness",
+        "raters"
+    ];
+
     ratings: Array<Rating>;
     overall: Rating = new Rating();
 

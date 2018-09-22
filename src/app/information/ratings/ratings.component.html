@@ -1,36 +1,102 @@
-<table>
-    <caption>ratings component</caption>
-    <thead>
-        <tr>
-            <th>semester</th>
-            <th>subject</th>
-            <th>usefulness</th>
-            <th>feasibility</th>
-            <th>diction</th>
-            <th>preparedness</th>
-            <th>helpfulness</th>
-            <th>raters</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let rating of ratings">
-            <td>{{ rating.semester }}</td>
-            <td>{{ rating.subject }}</td>
-            <td>{{ rating.usefulness | number : "1.2-2" }}</td>
-            <td>{{ rating.feasibility | number : "1.2-2" }}</td>
-            <td>{{ rating.diction | number : "1.2-2" }}</td>
-            <td>{{ rating.preparedness | number : "1.2-2" }}</td>
-            <td>{{ rating.helpfulness | number : "1.2-2" }}</td>
-            <td>{{ rating.raters }}</td>
-        </tr>
-        <tr>
-            <td colspan="2">overall</td>
-            <td>{{ overall.usefulness | number : "1.2-2" }}</td>
-            <td>{{ overall.feasibility | number : "1.2-2" }}</td>
-            <td>{{ overall.diction | number : "1.2-2" }}</td>
-            <td>{{ overall.preparedness | number : "1.2-2" }}</td>
-            <td>{{ overall.helpfulness | number : "1.2-2" }}</td>
-            <td>{{ overall.raters }}</td>
-        </tr>
-    </tbody>
-</table>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Ratings</mat-card-title>
+        <mat-card-subtitle>
+            <p>Since the first semester of 2017/18 school year, I ask students to provide me feedback about my performance as
+                demonstrator. The table below contains the collected ratings.</p>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-table [dataSource]="ratings">
+            <!-- Semester column -->
+            <ng-container matColumnDef="semester">
+                <mat-header-cell *matHeaderCellDef>Semester</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.semester }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    Overall
+                </mat-footer-cell>
+            </ng-container>
+
+            <!-- Subject column -->
+            <ng-container matColumnDef="subject">
+                <mat-header-cell *matHeaderCellDef>Subject</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.subject }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </ng-container>
+
+            <!-- Usefulness column -->
+            <ng-container matColumnDef="usefulness">
+                <mat-header-cell *matHeaderCellDef>Usefulness</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.usefulness | number : "1.2-2" }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    {{ overall.usefulness | number : "1.2-2" }}
+                </mat-footer-cell>
+            </ng-container>
+
+            <!-- Feasibility column -->
+            <ng-container matColumnDef="feasibility">
+                <mat-header-cell *matHeaderCellDef>Feasibility</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.feasibility | number : "1.2-2" }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    {{ overall.feasibility | number : "1.2-2" }}
+                </mat-footer-cell>
+            </ng-container>
+
+            <!-- Diction column -->
+            <ng-container matColumnDef="diction">
+                <mat-header-cell *matHeaderCellDef>Diction</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.diction | number : "1.2-2" }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    {{ overall.diction | number : "1.2-2" }}
+                </mat-footer-cell>
+            </ng-container>
+
+            <!-- Preparedness column -->
+            <ng-container matColumnDef="preparedness">
+                <mat-header-cell *matHeaderCellDef>Preparedness</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.preparedness | number : "1.2-2" }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    {{ overall.preparedness | number : "1.2-2" }}
+                </mat-footer-cell>
+            </ng-container>
+
+            <!-- Helpfulness column -->
+            <ng-container matColumnDef="helpfulness">
+                <mat-header-cell *matHeaderCellDef>Helpfulness</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.helpfulness | number : "1.2-2" }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    {{ overall.helpfulness | number : "1.2-2" }}
+                </mat-footer-cell>
+            </ng-container>
+
+            <!-- Raters column -->
+            <ng-container matColumnDef="raters">
+                <mat-header-cell *matHeaderCellDef>Raters</mat-header-cell>
+                <mat-cell *matCellDef="let rating">
+                    {{ rating.raters }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef>
+                    {{ overall.raters }}
+                </mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+        </mat-table>
+    </mat-card-content>
+</mat-card>

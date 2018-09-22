@@ -9,11 +9,14 @@ import { TimetableComponent } from "./timetable/timetable.component";
 import { RatingsComponent } from "./ratings/ratings.component";
 import { RatingsService } from "./ratings/ratings.service";
 
+import { MaterialDesignModule } from "../common/material-design.module";
+
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        InformationRoutingModule
+        InformationRoutingModule,
+        MaterialDesignModule
     ],
     declarations: [
         InformationComponent,
@@ -25,8 +28,4 @@ import { RatingsService } from "./ratings/ratings.service";
         RatingsService
     ]
 })
-export class InformationModule {
-    constructor() {
-        
-    }
-}
+export class InformationModule { }

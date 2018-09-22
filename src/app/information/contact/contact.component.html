@@ -1,15 +1,28 @@
-<table>
-    <caption>contact component</caption>
-    <thead>
-        <tr>
-            <th>phone</th>
-            <th>email</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>+36304494201</td>
-            <td>alex.toth@iit.uni-miskolc.hu</td>
-        </tr>
-    </tbody>
-</table>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Contact</mat-card-title>
+        <mat-card-subtitle>You can find my phone number and email address below.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-table [dataSource]="contacts">
+            <ng-container matColumnDef="type">
+                <mat-cell *matCellDef="let contact">
+                    {{ contact.type }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="value">
+                <mat-cell *matCellDef="let contact">
+                    <span [innerHTML]="contact.value"></span>
+                </mat-cell>
+            </ng-container>
+
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-card-actions>
+            <a href="mailto:alex.toth@iit.uni-miskolc.hu">
+                <button mat-button>Send mail</button>
+            </a>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>

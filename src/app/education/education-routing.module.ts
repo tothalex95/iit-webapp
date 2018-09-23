@@ -29,8 +29,4 @@ const educationRoutes: Routes = [
         RouterModule
     ]
 })
-export class EducationRoutingModule {
-    constructor() {
-        
-    }
-}
+export class EducationRoutingModule { }

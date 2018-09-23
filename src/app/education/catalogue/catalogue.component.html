@@ -3,22 +3,61 @@
         <mat-card-title>Catalogue</mat-card-title>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content *ngIf="catalogue">
         <!-- Course selection -->
-        <mat-form-field>
-            <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)">
-                <mat-option *ngFor="let course of courses" [value]="course">
-                    {{ course.title }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <p>
+            <mat-form-field>
+                <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)" [value]="courses[0]">
+                    <mat-option *ngFor="let course of courses" [value]="course">
+                        {{ course.title }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
 
         <!-- Neptun Code input field for filtering-->
-        <mat-form-field>
-            <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="neptunCode" (input)="onNeptunCodeChange()">
-        </mat-form-field>
+        <p>
+            <mat-form-field>
+                <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="filterSettings.neptunCode" (input)="onChange()">
+            </mat-form-field>
+        </p>
 
-        <mat-table *ngIf="catalogue" [dataSource]="catalogue" matSort>
+        <!-- Presence filter -->
+        <p>
+            <mat-label>Presence</mat-label>
+            <mat-button-toggle-group [(ngModel)]="filterSettings.presence" (change)="onChange()" [value]="2">
+                <mat-button-toggle [value]="0">Failed</mat-button-toggle>
+                <mat-button-toggle [value]="2">All</mat-button-toggle>
+                <mat-button-toggle [value]="1">Passed</mat-button-toggle>
+            </mat-button-toggle-group>
+        </p>
+
+        <!-- Homework filter -->
+        <p>
+            <mat-label>Homeworks</mat-label>
+            <mat-button-toggle-group [(ngModel)]="filterSettings.homeworks" (change)="onChange()" [value]="2">
+                <mat-button-toggle [value]="0">Failed</mat-button-toggle>
+                <mat-button-toggle [value]="2">All</mat-button-toggle>
+                <mat-button-toggle [value]="1">Passed</mat-button-toggle>
+            </mat-button-toggle-group>
+        </p>
+
+        <!-- Practice filter -->
+        <p>
+            <mat-label>Practice</mat-label>
+            <mat-button-toggle-group [(ngModel)]="filterSettings.practice" (change)="onChange()" [value]="2">
+                <mat-button-toggle [value]="0">Failed</mat-button-toggle>
+                <mat-button-toggle [value]="2">All</mat-button-toggle>
+                <mat-button-toggle [value]="1">Passed</mat-button-toggle>
+            </mat-button-toggle-group>
+        </p>
+
+        <!-- Reset filter -->
+        <p>
+            <button mat-button (click)="resetFilter()">Reset</button>
+        </p>
+
+        <mat-table [dataSource]="catalogue" matSort>
             <!-- Index column -->
             <ng-container matColumnDef="index">
                 <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
@@ -39,7 +78,7 @@
             <ng-container matColumnDef="presence">
                 <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ entry.presence }}
+                    {{ getPresenceResult(entry) }}
                 </mat-cell>
             </ng-container>
 
@@ -47,7 +86,7 @@
             <ng-container matColumnDef="homeworks">
                 <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ entry.hw1 && entry.hw2 }}
+                    {{ getHomeworksResult(entry) }}
                 </mat-cell>
             </ng-container>
 
@@ -55,7 +94,7 @@
             <ng-container matColumnDef="practice">
                 <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ entry.presence >= entry.max * 0.7 && entry.hw1 && entry.hw2 }}
+                    {{ getPracticeResult(entry) }}
                 </mat-cell>
             </ng-container>
 

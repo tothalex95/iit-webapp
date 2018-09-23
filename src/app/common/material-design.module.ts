@@ -13,6 +13,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatSortModule } from "@angular/material/sort";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { MatSortModule } from "@angular/material/sort";
         MatButtonModule,
         MatTabsModule,
         MatExpansionModule,
-        MatSortModule
+        MatSortModule,
+        MatButtonToggleModule
     ],
     exports: [
         MatTableModule,
@@ -42,7 +44,8 @@ import { MatSortModule } from "@angular/material/sort";
         MatButtonModule,
         MatTabsModule,
         MatExpansionModule,
-        MatSortModule
+        MatSortModule,
+        MatButtonToggleModule
     ]
 })
 export class MaterialDesignModule { }

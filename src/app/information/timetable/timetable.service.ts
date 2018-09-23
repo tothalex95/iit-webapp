@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { InformationModule } from "../information.module";
 import { Observable } from "rxjs";
-import { Timetable } from "./timetable";
+
+import { InformationModule } from "../information.module";
+import { TimetableEntry } from "./timetable-entry";
 
 const TIMETABLE_URL: string = "json/timetable.json";
 
@@ -13,7 +14,7 @@ const TIMETABLE_URL: string = "json/timetable.json";
 export class TimetableService {
     constructor(private http: HttpClient) {}
 
-    getTimetable(): Observable<Timetable> {
-        return this.http.get<Timetable>(TIMETABLE_URL);
+    getTimetable(): Observable<Array<TimetableEntry>> {
+        return this.http.get<Array<TimetableEntry>>(TIMETABLE_URL);
     }
 }

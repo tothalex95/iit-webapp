@@ -1,48 +1,61 @@
-<div>
-    <h2>timetable</h2>
-    <table *ngIf="timetable && timetable.monday">
-        <caption>monday</caption>
-        <tbody>
-            <tr *ngFor="let entry of timetable.monday">
-                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
-                <td>{{ entry.subject }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table *ngIf="timetable && timetable.tuesday">
-        <caption>tuesday</caption>
-        <tbody>
-            <tr *ngFor="let entry of timetable.tuesday">
-                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
-                <td>{{ entry.subject }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table *ngIf="timetable && timetable.wednesday">
-        <caption>wednesday</caption>
-        <tbody>
-            <tr *ngFor="let entry of timetable.wednesday">
-                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
-                <td>{{ entry.subject }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table *ngIf="timetable && timetable.thursday">
-        <caption>thursday</caption>
-        <tbody>
-            <tr *ngFor="let entry of timetable.thursday">
-                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
-                <td>{{ entry.subject }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table *ngIf="timetable && timetable.friday">
-        <caption>friday</caption>
-        <tbody>
-            <tr *ngFor="let entry of timetable.friday">
-                <td>{{ entry.startHour + "-" + entry.endHour }}</td>
-                <td>{{ entry.subject }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Timetable</mat-card-title>
+        <mat-card-subtitle>You can see my current timetable below.</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-table [dataSource]="timetable">
+            <!-- Start hour column -->
+            <ng-container matColumnDef="startHour">
+                <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.startHour }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Monday column -->
+            <ng-container matColumnDef="monday">
+                <mat-header-cell *matHeaderCellDef>Monday</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.monday }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Tuesday column -->
+            <ng-container matColumnDef="tuesday">
+                <mat-header-cell *matHeaderCellDef>Tuesday</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.tuesday }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Wednesday column -->
+            <ng-container matColumnDef="wednesday">
+                <mat-header-cell *matHeaderCellDef>Wednesday</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.wednesday }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Thursday column -->
+            <ng-container matColumnDef="thursday">
+                <mat-header-cell *matHeaderCellDef>Thursday</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.thursday }}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Friday column -->
+            <ng-container matColumnDef="friday">
+                <mat-header-cell *matHeaderCellDef>Friday</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    {{ entry.friday }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+    </mat-card-content>
+</mat-card>

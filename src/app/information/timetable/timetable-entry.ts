@@ -1,5 +1,8 @@
 export class TimetableEntry {
     startHour: number;
-    endHour: number;
-    subject: string;
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
 }

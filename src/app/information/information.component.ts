@@ -4,7 +4,18 @@ import { Component } from "@angular/core";
     templateUrl: "./information.component.html"
 })
 export class InformationComponent {
-    constructor() {
-        
-    }
+    readonly links = [
+        {
+            path: "contact",
+            label: "Contact"
+        },
+        {
+            path: "timetable",
+            label: "Timetable"
+        },
+        {
+            path: "ratings",
+            label: "Ratings"
+        }
+    ];
 }

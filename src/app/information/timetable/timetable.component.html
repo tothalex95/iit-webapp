@@ -10,7 +10,7 @@
             <ng-container matColumnDef="startHour">
                 <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ entry.startHour }}
+                    {{ entry.startHour | hour }}
                 </mat-cell>
             </ng-container>
 

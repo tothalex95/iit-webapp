@@ -10,6 +10,7 @@ import { RatingsComponent } from "./ratings/ratings.component";
 import { RatingsService } from "./ratings/ratings.service";
 
 import { MaterialDesignModule } from "../common/material-design.module";
+import { HourPipe } from "./timetable/hour.pipe";
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { MaterialDesignModule } from "../common/material-design.module";
         InformationComponent,
         ContactComponent,
         TimetableComponent,
-        RatingsComponent
+        RatingsComponent,
+        HourPipe
     ],
     providers: [
         RatingsService

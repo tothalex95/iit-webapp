@@ -18,7 +18,8 @@
         <!-- Neptun Code input field for filtering-->
         <p>
             <mat-form-field>
-                <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="filterSettings.neptunCode" (input)="onChange()">
+                <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="filterSettings.neptunCode"
+                    (input)="onChange()">
             </mat-form-field>
         </p>
 
@@ -78,7 +79,17 @@
             <ng-container matColumnDef="presence">
                 <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ getPresenceResult(entry) }}
+                    <div [ngSwitch]="getPresenceResult(entry)">
+                        <div *ngSwitchCase="0">
+                            <mat-icon>close</mat-icon>
+                        </div>
+                        <div *ngSwitchCase="1">
+                            <mat-icon>done</mat-icon>
+                        </div>
+                        <div *ngSwitchDefault>
+                            <mat-icon>help</mat-icon>
+                        </div>
+                    </div>
                 </mat-cell>
             </ng-container>
 
@@ -86,7 +97,17 @@
             <ng-container matColumnDef="homeworks">
                 <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ getHomeworksResult(entry) }}
+                    <div [ngSwitch]="getHomeworksResult(entry)">
+                        <div *ngSwitchCase="0">
+                            <mat-icon>close</mat-icon>
+                        </div>
+                        <div *ngSwitchCase="1">
+                            <mat-icon>done</mat-icon>
+                        </div>
+                        <div *ngSwitchDefault>
+                            <mat-icon>help</mat-icon>
+                        </div>
+                    </div>
                 </mat-cell>
             </ng-container>
 
@@ -94,7 +115,17 @@
             <ng-container matColumnDef="practice">
                 <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
-                    {{ getPracticeResult(entry) }}
+                    <div [ngSwitch]="getPracticeResult(entry)">
+                        <div *ngSwitchCase="0">
+                            <mat-icon>close</mat-icon>
+                        </div>
+                        <div *ngSwitchCase="1">
+                            <mat-icon>done_all</mat-icon>
+                        </div>
+                        <div *ngSwitchDefault>
+                            <mat-icon>help</mat-icon>
+                        </div>
+                    </div>
                 </mat-cell>
             </ng-container>
 

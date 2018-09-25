@@ -26,8 +26,4 @@ import { MaterialDesignModule } from "./common/material-design.module";
         AppComponent
     ]
 })
-export class AppModule {
-    constructor() {
-        
-    }
-}
+export class AppModule { }

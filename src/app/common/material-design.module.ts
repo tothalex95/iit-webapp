@@ -18,6 +18,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatLineModule } from "@angular/material";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
     imports: [
@@ -38,7 +39,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
         MatIconModule,
         MatLineModule,
         MatDialogModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatGridListModule
     ],
     exports: [
         MatTableModule,
@@ -57,7 +59,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
         MatIconModule,
         MatLineModule,
         MatDialogModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatGridListModule
     ]
 })
 export class MaterialDesignModule { }

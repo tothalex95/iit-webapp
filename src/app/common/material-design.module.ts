@@ -16,6 +16,8 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatIconModule } from "@angular/material/icon";
 import { MatLineModule } from "@angular/material";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
     imports: [
@@ -34,7 +36,9 @@ import { MatLineModule } from "@angular/material";
         MatSortModule,
         MatButtonToggleModule,
         MatIconModule,
-        MatLineModule
+        MatLineModule,
+        MatDialogModule,
+        MatTooltipModule
     ],
     exports: [
         MatTableModule,
@@ -51,7 +55,9 @@ import { MatLineModule } from "@angular/material";
         MatSortModule,
         MatButtonToggleModule,
         MatIconModule,
-        MatLineModule
+        MatLineModule,
+        MatDialogModule,
+        MatTooltipModule
     ]
 })
 export class MaterialDesignModule { }

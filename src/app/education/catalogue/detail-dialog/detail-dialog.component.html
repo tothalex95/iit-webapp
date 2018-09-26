@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Details for student identified by {{ data.neptunCode }}</h1>
+<mat-dialog-content>
+    <!-- Presence details -->
+    <h3>Presence</h3>
+    <mat-table [dataSource]="data.presenceDetails">
+        <ng-container matColumnDef="key">
+            <mat-cell *matCellDef="let entry">
+                {{ entry.date }}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let entry">
+                <div [ngSwitch]="entry.detail">
+                    <div *ngSwitchCase="0" matTooltip="The student missed the lecture">
+                        <mat-icon>close</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="1" matTooltip="The student attended the lecture">
+                        <mat-icon>done</mat-icon>
+                    </div>
+                    <div *ngSwitchDefault matTooltip="No information available">
+                        <mat-icon>help</mat-icon>
+                    </div>
+                </div>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <!-- Homeworks -->
+    <h3>Homework</h3>
+    <mat-table [dataSource]="homeworks">
+        <ng-container matColumnDef="key">
+            <mat-cell *matCellDef="let entry">
+                {{ entry.title }}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let entry">
+                <div [ngSwitch]="entry.result">
+                    <div *ngSwitchCase="0" matTooltip="The student didn't do the homework">
+                        <mat-icon>close</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="1" matTooltip="The student did the homework">
+                        <mat-icon>done</mat-icon>
+                    </div>
+                    <div *ngSwitchDefault matTooltip="No information available">
+                        <mat-icon>help</mat-icon>
+                    </div>
+                </div>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -63,7 +63,7 @@
             <ng-container matColumnDef="index">
                 <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
                 <mat-cell *matCellDef="let entry; let i = index;">
-                    {{ i + 1 }}
+                    {{ i + 1 + '.' }}
                 </mat-cell>
             </ng-container>
 
@@ -80,13 +80,13 @@
                 <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
                     <div [ngSwitch]="getPresenceResult(entry)">
-                        <div *ngSwitchCase="0">
+                        <div *ngSwitchCase="0" matTooltip="The student missed too many lecture">
                             <mat-icon>close</mat-icon>
                         </div>
-                        <div *ngSwitchCase="1">
+                        <div *ngSwitchCase="1" matTooltip="The student attended the lectures">
                             <mat-icon>done</mat-icon>
                         </div>
-                        <div *ngSwitchDefault>
+                        <div *ngSwitchDefault matTooltip="No information available">
                             <mat-icon>help</mat-icon>
                         </div>
                     </div>
@@ -98,13 +98,13 @@
                 <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
                     <div [ngSwitch]="getHomeworksResult(entry)">
-                        <div *ngSwitchCase="0">
+                        <div *ngSwitchCase="0" matTooltip="The student didn't do the homeworks">
                             <mat-icon>close</mat-icon>
                         </div>
-                        <div *ngSwitchCase="1">
+                        <div *ngSwitchCase="1" matTooltip="The student did the homeworks">
                             <mat-icon>done</mat-icon>
                         </div>
-                        <div *ngSwitchDefault>
+                        <div *ngSwitchDefault matTooltip="No information available">
                             <mat-icon>help</mat-icon>
                         </div>
                     </div>
@@ -116,13 +116,13 @@
                 <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
                     <div [ngSwitch]="getPracticeResult(entry)">
-                        <div *ngSwitchCase="0">
+                        <div *ngSwitchCase="0" matTooltip="The student failed to fulfil the requirements">
                             <mat-icon>close</mat-icon>
                         </div>
-                        <div *ngSwitchCase="1">
+                        <div *ngSwitchCase="1" matTooltip="The student fulfilled the requirements">
                             <mat-icon>done_all</mat-icon>
                         </div>
-                        <div *ngSwitchDefault>
+                        <div *ngSwitchDefault matTooltip="No information available">
                             <mat-icon>help</mat-icon>
                         </div>
                     </div>
@@ -134,6 +134,15 @@
                 <mat-header-cell *matHeaderCellDef>Plus points</mat-header-cell>
                 <mat-cell *matCellDef="let entry">
                     {{ entry.plusPoint }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
+                <mat-cell *matCellDef="let entry">
+                    <button mat-icon-button (click)="openDetailDialog(entry)" matTooltip="Click to see the details">
+                        <mat-icon>details</mat-icon>
+                    </button>
                 </mat-cell>
             </ng-container>
 

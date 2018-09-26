@@ -7,6 +7,8 @@ import { CatalogueEntry } from "./catalogue-entry";
 import { CatalogueService } from "./catalogue.service";
 import { Course } from "./course";
 import { COURSES } from "./courses";
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { DetailDialogComponent } from "./detail-dialog/detail-dialog.component";
 
 @Component({
     templateUrl: "./catalogue.component.html"
@@ -18,7 +20,8 @@ export class CatalogueComponent implements OnInit {
         "presence",
         "homeworks",
         "practice",
-        "plusPoints"
+        "plusPoints",
+        "details"
     ];
 
     readonly courses: Course[] = COURSES;
@@ -38,7 +41,7 @@ export class CatalogueComponent implements OnInit {
 
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private catalogueService: CatalogueService) { }
+    constructor(private catalogueService: CatalogueService, private dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.loadCatalogue(this.courses[0]);
@@ -57,6 +60,15 @@ export class CatalogueComponent implements OnInit {
 
                 this.resetFilter();
             });
+    }
+
+    openDetailDialog(entry: CatalogueEntry): void {
+        const dialogConfig: MatDialogConfig = new MatDialogConfig();
+
+        dialogConfig.minWidth = 300;
+        dialogConfig.data = entry;
+
+        this.dialog.open(DetailDialogComponent, dialogConfig);
     }
 
     onChange(): void {

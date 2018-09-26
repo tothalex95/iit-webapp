@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { EducationRoutingModule } from "./education-routing.module";
 import { EducationComponent } from "./education.component";
 import { CatalogueComponent } from "./catalogue/catalogue.component";
+import { DetailDialogComponent } from "./catalogue/detail-dialog/detail-dialog.component";
 import { CoursesComponent } from "./courses/courses.component";
 import { CoursesService } from "./courses/courses.service";
 
@@ -20,7 +21,11 @@ import { MaterialDesignModule } from "../common/material-design.module";
     declarations: [
         EducationComponent,
         CatalogueComponent,
+        DetailDialogComponent,
         CoursesComponent
+    ],
+    entryComponents: [
+        DetailDialogComponent
     ],
     providers: [
         CoursesService

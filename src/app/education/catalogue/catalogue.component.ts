@@ -13,7 +13,7 @@ import { DetailDialogComponent } from "./detail-dialog/detail-dialog.component";
 @Component({
     templateUrl: "./catalogue.component.html"
 })
-export class CatalogueComponent implements OnInit {
+export class CatalogueComponent {
     readonly displayedColumns: string[] = [
         "index",
         "neptunCode",
@@ -42,10 +42,6 @@ export class CatalogueComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private catalogueService: CatalogueService, private dialog: MatDialog) { }
-
-    ngOnInit(): void {
-        this.loadCatalogue(this.courses[0]);
-    }
 
     loadCatalogue(course: Course): void {
         this.catalogueService.getCatalogue(course.subject, course.year)

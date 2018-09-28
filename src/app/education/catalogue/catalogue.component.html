@@ -3,12 +3,12 @@
         <mat-card-title>Catalogue</mat-card-title>
     </mat-card-header>
 
-    <mat-card-content *ngIf="catalogue">
+    <mat-card-content>
         <mat-grid-list cols="3" rowHeight="5:1">
             <mat-grid-tile>
                 <!-- Course selection -->
                 <mat-form-field>
-                    <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)" [value]="courses[0]">
+                    <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)">
                         <mat-option *ngFor="let course of courses" [value]="course">
                             {{ course.title }}
                         </mat-option>
@@ -60,100 +60,102 @@
             </mat-grid-tile>
         </mat-grid-list>
 
-        <mat-table [dataSource]="catalogue" matSort>
-            <!-- Index column -->
-            <ng-container matColumnDef="index">
-                <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-                <mat-cell *matCellDef="let entry; let i = index;">
-                    {{ i + 1 + '.' }}
-                </mat-cell>
-            </ng-container>
+        <div [hidden]="!catalogue">
+            <mat-table [dataSource]="catalogue" matSort>
+                <!-- Index column -->
+                <ng-container matColumnDef="index">
+                    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+                    <mat-cell *matCellDef="let entry; let i = index;">
+                        {{ i + 1 + '.' }}
+                    </mat-cell>
+                </ng-container>
 
-            <!-- Neptun Code column -->
-            <ng-container matColumnDef="neptunCode">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Neptun Code</mat-header-cell>
-                <mat-cell *matCellDef="let entry">
-                    {{ entry.neptunCode }}
-                </mat-cell>
-            </ng-container>
+                <!-- Neptun Code column -->
+                <ng-container matColumnDef="neptunCode">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Neptun Code</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        {{ entry.neptunCode }}
+                    </mat-cell>
+                </ng-container>
 
-            <!-- Presence column -->
-            <ng-container matColumnDef="presence">
-                <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
-                <mat-cell *matCellDef="let entry">
-                    <div [ngSwitch]="getPresenceResult(entry)">
-                        <div *ngSwitchCase="0" matTooltip="The student missed too many lecture">
-                            <mat-icon>close</mat-icon>
+                <!-- Presence column -->
+                <ng-container matColumnDef="presence">
+                    <mat-header-cell *matHeaderCellDef>Presence</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        <div [ngSwitch]="getPresenceResult(entry)">
+                            <div *ngSwitchCase="0" matTooltip="The student missed too many lecture">
+                                <mat-icon>close</mat-icon>
+                            </div>
+                            <div *ngSwitchCase="1" matTooltip="The student attended the lectures">
+                                <mat-icon>done</mat-icon>
+                            </div>
+                            <div *ngSwitchDefault matTooltip="No information available">
+                                <mat-icon>help</mat-icon>
+                            </div>
                         </div>
-                        <div *ngSwitchCase="1" matTooltip="The student attended the lectures">
-                            <mat-icon>done</mat-icon>
-                        </div>
-                        <div *ngSwitchDefault matTooltip="No information available">
-                            <mat-icon>help</mat-icon>
-                        </div>
-                    </div>
-                </mat-cell>
-            </ng-container>
+                    </mat-cell>
+                </ng-container>
 
-            <!-- Homeworks column-->
-            <ng-container matColumnDef="homeworks">
-                <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
-                <mat-cell *matCellDef="let entry">
-                    <div [ngSwitch]="getHomeworksResult(entry)">
-                        <div *ngSwitchCase="0" matTooltip="The student didn't do the homeworks">
-                            <mat-icon>close</mat-icon>
+                <!-- Homeworks column-->
+                <ng-container matColumnDef="homeworks">
+                    <mat-header-cell *matHeaderCellDef>Homeworks</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        <div [ngSwitch]="getHomeworksResult(entry)">
+                            <div *ngSwitchCase="0" matTooltip="The student didn't do the homeworks">
+                                <mat-icon>close</mat-icon>
+                            </div>
+                            <div *ngSwitchCase="1" matTooltip="The student did the homeworks">
+                                <mat-icon>done</mat-icon>
+                            </div>
+                            <div *ngSwitchDefault matTooltip="No information available">
+                                <mat-icon>help</mat-icon>
+                            </div>
                         </div>
-                        <div *ngSwitchCase="1" matTooltip="The student did the homeworks">
-                            <mat-icon>done</mat-icon>
-                        </div>
-                        <div *ngSwitchDefault matTooltip="No information available">
-                            <mat-icon>help</mat-icon>
-                        </div>
-                    </div>
-                </mat-cell>
-            </ng-container>
+                    </mat-cell>
+                </ng-container>
 
-            <!-- Practice column -->
-            <ng-container matColumnDef="practice">
-                <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
-                <mat-cell *matCellDef="let entry">
-                    <div [ngSwitch]="getPracticeResult(entry)">
-                        <div *ngSwitchCase="0" matTooltip="The student failed to fulfil the requirements">
-                            <mat-icon>close</mat-icon>
+                <!-- Practice column -->
+                <ng-container matColumnDef="practice">
+                    <mat-header-cell *matHeaderCellDef>Practice</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        <div [ngSwitch]="getPracticeResult(entry)">
+                            <div *ngSwitchCase="0" matTooltip="The student failed to fulfil the requirements">
+                                <mat-icon>close</mat-icon>
+                            </div>
+                            <div *ngSwitchCase="1" matTooltip="The student fulfilled the requirements">
+                                <mat-icon>done_all</mat-icon>
+                            </div>
+                            <div *ngSwitchDefault matTooltip="No information available">
+                                <mat-icon>help</mat-icon>
+                            </div>
                         </div>
-                        <div *ngSwitchCase="1" matTooltip="The student fulfilled the requirements">
-                            <mat-icon>done_all</mat-icon>
-                        </div>
-                        <div *ngSwitchDefault matTooltip="No information available">
-                            <mat-icon>help</mat-icon>
-                        </div>
-                    </div>
-                </mat-cell>
-            </ng-container>
+                    </mat-cell>
+                </ng-container>
 
-            <!-- Plus points column -->
-            <ng-container matColumnDef="plusPoints">
-                <mat-header-cell *matHeaderCellDef>Plus points</mat-header-cell>
-                <mat-cell *matCellDef="let entry">
-                    {{ entry.plusPoint }}
-                </mat-cell>
-            </ng-container>
+                <!-- Plus points column -->
+                <ng-container matColumnDef="plusPoints">
+                    <mat-header-cell *matHeaderCellDef>Plus points</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        {{ entry.plusPoint }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="details">
-                <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
-                <mat-cell *matCellDef="let entry">
-                    <button mat-icon-button (click)="openDetailDialog(entry)" matTooltip="Click to see the details">
-                        <mat-icon>details</mat-icon>
-                    </button>
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="details">
+                    <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        <button mat-icon-button (click)="openDetailDialog(entry)" matTooltip="Click to see the details">
+                            <mat-icon>details</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
-        </mat-table>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></mat-row>
+            </mat-table>
 
-        <!-- Paginator -->
-        <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+            <!-- Paginator -->
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+        </div>
 
     </mat-card-content>
 </mat-card>

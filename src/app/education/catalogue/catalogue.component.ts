@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTableDataSource } from "@angular/material/table";
+import { Component, ViewChild } from "@angular/core";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
 
 import { CatalogueEntry } from "./catalogue-entry";
 import { CatalogueService } from "./catalogue.service";
 import { Course } from "./course";
 import { COURSES } from "./courses";
-import { MatDialog, MatDialogConfig } from "@angular/material";
-import { DetailDialogComponent } from "./detail-dialog/detail-dialog.component";
+import { InformationDialogComponent } from "./information-dialog/information-dialog.component";
+
 
 @Component({
     templateUrl: "./catalogue.component.html"
@@ -21,7 +22,7 @@ export class CatalogueComponent {
         "homeworks",
         "practice",
         "plusPoints",
-        "details"
+        "information"
     ];
 
     readonly courses: Course[] = COURSES;
@@ -58,13 +59,13 @@ export class CatalogueComponent {
             });
     }
 
-    openDetailDialog(entry: CatalogueEntry): void {
+    openInformationDialog(entry: CatalogueEntry): void {
         const dialogConfig: MatDialogConfig = new MatDialogConfig();
 
         dialogConfig.minWidth = 300;
         dialogConfig.data = entry;
 
-        this.dialog.open(DetailDialogComponent, dialogConfig);
+        this.dialog.open(InformationDialogComponent, dialogConfig);
     }
 
     onChange(): void {

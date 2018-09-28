@@ -140,11 +140,11 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="details">
-                    <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
+                <ng-container matColumnDef="information">
+                    <mat-header-cell *matHeaderCellDef>Information</mat-header-cell>
                     <mat-cell *matCellDef="let entry">
-                        <button mat-icon-button (click)="openDetailDialog(entry)" matTooltip="Click to see the details">
-                            <mat-icon>details</mat-icon>
+                        <button mat-icon-button (click)="openInformationDialog(entry)" matTooltip="Click for more information">
+                            <mat-icon>info</mat-icon>
                         </button>
                     </mat-cell>
                 </ng-container>

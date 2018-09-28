@@ -1,11 +1,12 @@
 import { Component, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA } from "@angular/material";
+
 import { CatalogueEntry } from "../catalogue-entry";
 
 @Component({
-    templateUrl: "detail-dialog.component.html"
+    templateUrl: "information-dialog.component.html"
 })
-export class DetailDialogComponent {
+export class InformationDialogComponent {
     readonly displayedColumns: string[] = [
         "key",
         "value"

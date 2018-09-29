@@ -1,28 +1,27 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Contact</mat-card-title>
+        <mat-card-title>
+            <h2>Contact</h2>
+        </mat-card-title>
         <mat-card-subtitle>You can find my phone number and email address below.</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <mat-table [dataSource]="contacts">
-            <ng-container matColumnDef="type">
-                <mat-cell *matCellDef="let contact">
-                    {{ contact.type }}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="value">
-                <mat-cell *matCellDef="let contact">
-                    <span [innerHTML]="contact.value"></span>
-                </mat-cell>
-            </ng-container>
-
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-        <mat-card-actions>
-            <a href="mailto:alex.toth@iit.uni-miskolc.hu">
-                <button mat-button>Send mail</button>
-            </a>
-        </mat-card-actions>
+        <mat-list>
+            <mat-list-item>
+                <mat-icon mat-list-icon>phone</mat-icon>
+                <h4 mat-line>Phone</h4>
+                <p mat-line>
+                    <span [hidden]="phoneNumberVisible" (mouseenter)="phoneNumberVisible = !phoneNumberVisible">+36-**-***-****</span>
+                    <span [hidden]="!phoneNumberVisible" (mouseleave)="phoneNumberVisible = !phoneNumberVisible">Haha! Just kidding!</span>
+                </p>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon>mail</mat-icon>
+                <h4 mat-line>Email</h4>
+                <p mat-line>
+                    <a href="mailto:alex.toth@iit.uni-miskolc.hu">alex.toth@iit.uni-miskolc.hu</a>
+                </p>
+            </mat-list-item>
+        </mat-list>
     </mat-card-content>
 </mat-card>

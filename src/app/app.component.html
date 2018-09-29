@@ -35,10 +35,17 @@
     <mat-sidenav-content>
         <!-- Toolbar -->
         <mat-toolbar color="primary">
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>Alex Toth's Website</span>
+            <mat-toolbar-row>
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>Alex Toth's Website</span>
+                <span class="my-spacefiller"></span>
+                <blockquote>
+                    <q>Talk is cheap. Show me the code.</q>
+                    <span> - Linus Torvalds</span>
+                </blockquote>
+            </mat-toolbar-row>
         </mat-toolbar>
 
         <div class="my-container">

@@ -6,3 +6,11 @@
     color: inherit;
     text-decoration: inherit;
 }
+
+.my-spacefiller {
+    flex: 1 1 auto;
+}
+
+blockquote q {
+    font-style: italic;
+}

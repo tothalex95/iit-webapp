@@ -3,6 +3,7 @@
     <!-- Presence details -->
     <div>
         <h3>Presence</h3>
+        <mat-progress-bar mode="determinate" [value]="data.presence / data.max * 100" matTooltip="{{ (data.presence / data.max * 100 | number : '1.2-2') + '%' }}"></mat-progress-bar>
         <mat-table [dataSource]="data.presenceDetails">
             <ng-container matColumnDef="key">
                 <mat-cell *matCellDef="let entry">
@@ -27,6 +28,8 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
+
+    <mat-divider></mat-divider>
 
     <!-- Homeworks -->
     <div>
@@ -56,11 +59,15 @@
         </mat-table>
     </div>
 
+    <mat-divider></mat-divider>
+
     <!-- Plus points -->
-    <div *ngIf="data.plusPoint">
+    <div>
         <h3>Plus points</h3>
         <p>The student has {{ data.plusPoint }} plus points.</p>
     </div>
+
+    <mat-divider></mat-divider>
 
     <!-- Practice -->
     <div *ngIf="data.hw2 != 2">

@@ -19,6 +19,7 @@ import { MatLineModule } from "@angular/material";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
         MatLineModule,
         MatDialogModule,
         MatTooltipModule,
-        MatGridListModule
+        MatGridListModule,
+        MatProgressBarModule
     ],
     exports: [
         MatTableModule,
@@ -60,7 +62,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
         MatLineModule,
         MatDialogModule,
         MatTooltipModule,
-        MatGridListModule
+        MatGridListModule,
+        MatProgressBarModule
     ]
 })
 export class MaterialDesignModule { }

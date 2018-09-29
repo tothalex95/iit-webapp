@@ -6,9 +6,10 @@
     </mat-card-header>
 
     <mat-card-content>
-        <mat-grid-list cols="3" rowHeight="5:1">
+        <mat-grid-list cols="3" rowHeight="5:3">
             <mat-grid-tile>
                 <!-- Course selection -->
+                <mat-grid-tile-header>Course</mat-grid-tile-header>
                 <mat-form-field>
                     <mat-select placeholder="Select course" (selectionChange)="loadCatalogue($event.value)">
                         <mat-option *ngFor="let course of courses" [value]="course">
@@ -20,6 +21,7 @@
 
             <mat-grid-tile>
                 <!-- Neptun Code input field for filtering-->
+                <mat-grid-tile-header>Neptun Code</mat-grid-tile-header>
                 <mat-form-field>
                     <input matInput type="text" maxlength="6" placeholder="Neptun Code" [(ngModel)]="filterSettings.neptunCode"
                         (input)="onChange()">
@@ -28,13 +30,14 @@
 
             <mat-grid-tile>
                 <!-- Reset filter -->
+                <mat-grid-tile-header>Reset</mat-grid-tile-header>
                 <button mat-raised-button (click)="resetFilter()">Reset</button>
             </mat-grid-tile>
 
             <mat-grid-tile>
                 <!-- Presence filter -->
-                <mat-label>Presence</mat-label>
-                <mat-button-toggle-group [(ngModel)]="filterSettings.presence" (change)="onChange()" [value]="2">
+                <mat-grid-tile-header>Presence</mat-grid-tile-header>
+                <mat-button-toggle-group [(ngModel)]="filterSettings.presence" (change)="onChange()" [value]="2" [disabled]="!catalogue">
                     <mat-button-toggle [value]="0">Failed</mat-button-toggle>
                     <mat-button-toggle [value]="2">All</mat-button-toggle>
                     <mat-button-toggle [value]="1">Passed</mat-button-toggle>
@@ -43,8 +46,8 @@
 
             <mat-grid-tile>
                 <!-- Homework filter -->
-                <mat-label>Homeworks</mat-label>
-                <mat-button-toggle-group [(ngModel)]="filterSettings.homeworks" (change)="onChange()" [value]="2">
+                <mat-grid-tile-header>Homeworks</mat-grid-tile-header>
+                <mat-button-toggle-group [(ngModel)]="filterSettings.homeworks" (change)="onChange()" [value]="2" [disabled]="!catalogue">
                     <mat-button-toggle [value]="0">Failed</mat-button-toggle>
                     <mat-button-toggle [value]="2">All</mat-button-toggle>
                     <mat-button-toggle [value]="1">Passed</mat-button-toggle>
@@ -53,8 +56,8 @@
 
             <mat-grid-tile>
                 <!-- Practice filter -->
-                <mat-label>Practice</mat-label>
-                <mat-button-toggle-group [(ngModel)]="filterSettings.practice" (change)="onChange()" [value]="2">
+                <mat-grid-tile-header>Practice</mat-grid-tile-header>
+                <mat-button-toggle-group [(ngModel)]="filterSettings.practice" (change)="onChange()" [value]="2" [disabled]="!catalogue">
                     <mat-button-toggle [value]="0">Failed</mat-button-toggle>
                     <mat-button-toggle [value]="2">All</mat-button-toggle>
                     <mat-button-toggle [value]="1">Passed</mat-button-toggle>

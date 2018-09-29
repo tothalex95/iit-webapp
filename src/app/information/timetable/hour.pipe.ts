@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from "@angular/core";
-
 import { String } from "typescript-string-operations";
 
 const ONE_DIGIT_HOURS_TEMPLATE: string = "0{0}:00-0{1}:00";

@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { InformationComponent } from "./information.component";
 import { ContactComponent } from "./contact/contact.component";
-import { TimetableComponent } from "./timetable/timetable.component";
+import { InformationComponent } from "./information.component";
 import { RatingsComponent } from "./ratings/ratings.component";
+import { TimetableComponent } from "./timetable/timetable.component";
 
 const informationRoutes: Routes = [
     {

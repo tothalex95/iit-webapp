@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
-import { TimetableService } from "./timetable.service";
 import { TimetableEntry } from "./timetable-entry";
+import { TimetableService } from "./timetable.service";
 
 @Component({
     templateUrl: "./timetable.component.html"

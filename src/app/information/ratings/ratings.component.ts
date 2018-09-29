@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { RatingsService } from "./ratings.service";
+
 import { Rating } from "./rating";
+import { RatingsService } from "./ratings.service";
 
 @Component({
     templateUrl: "./ratings.component.html"

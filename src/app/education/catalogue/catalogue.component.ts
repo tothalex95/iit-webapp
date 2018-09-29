@@ -10,7 +10,6 @@ import { Course } from "./course";
 import { COURSES } from "./courses";
 import { InformationDialogComponent } from "./information-dialog/information-dialog.component";
 
-
 @Component({
     templateUrl: "./catalogue.component.html"
 })

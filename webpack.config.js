@@ -3,6 +3,7 @@
  */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { AngularCompilerPlugin } = require("@ngtools/webpack");
 
 module.exports = function WebpackConfiguration() {
@@ -26,6 +27,10 @@ module.exports = function WebpackConfiguration() {
                 {
                     test: /\.html$/,
                     loader: "raw-loader"
+                },
+                {
+                    test: /\.css$/,
+                    loader: "raw-loader"
                 }
             ]
         },
@@ -38,6 +43,10 @@ module.exports = function WebpackConfiguration() {
             new ScriptExtHtmlWebpackPlugin({
                 defaultAttribute: "defer"
             }),
+            new CopyWebpackPlugin([{
+                from: "src/assets",
+                to: "assets"
+            }]),
             new AngularCompilerPlugin({
                 tsConfigPath: "./tsconfig.json",
                 entryModule: "./src/app/app.module#AppModule",

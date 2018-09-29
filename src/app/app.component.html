@@ -1,10 +1,11 @@
 <mat-sidenav-container fullscreen>
     <!-- Sidenav -->
-    <mat-sidenav #sidenav mode="push">
+    <mat-sidenav #sidenav mode="over">
         <mat-toolbar color="primary">
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
+            <span>Alex Toth's Website</span>
         </mat-toolbar>
         <mat-accordion>
             <mat-expansion-panel *ngFor="let main of menu" [disabled]="!main.submenu">
@@ -13,7 +14,8 @@
                         <mat-list>
                             <mat-list-item>
                                 <mat-icon mat-list-icon>{{ main.icon }}</mat-icon>
-                                <a [routerLink]="main.path" routerLinkActive="router-link-active" mat-line style="color: inherit; text-decoration: inherit;">{{ main.label }}</a>
+                                <a [routerLink]="main.path" routerLinkActive="router-link-active" (click)="!main.submenu && sidenav.toggle()"
+                                    mat-line class="my-menu-item">{{ main.label }}</a>
                             </mat-list-item>
                         </mat-list>
                     </mat-panel-title>
@@ -33,14 +35,14 @@
     <mat-sidenav-content>
         <!-- Toolbar -->
         <mat-toolbar color="primary">
-            <span [hidden]="sidenav.opened">
-                <button mat-icon-button (click)="sidenav.toggle()">
-                    <mat-icon>menu</mat-icon>
-                </button>
-            </span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
             <span>Alex Toth's Website</span>
         </mat-toolbar>
 
-        <router-outlet></router-outlet>
+        <div class="my-container">
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

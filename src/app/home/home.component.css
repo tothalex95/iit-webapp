@@ -1,0 +1,7 @@
+blockquote q {
+    font-style: italic;
+}
+
+blockquote span {
+    float: right;
+}

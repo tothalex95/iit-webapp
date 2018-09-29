@@ -1,7 +1,80 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Welcome to my website!</mat-card-title>
+        <mat-card-title>
+            <h2>Welcome to my website!</h2>
+        </mat-card-title>
     </mat-card-header>
     <mat-card-content>
+        <mat-list>
+            <!-- Education -->
+            <mat-list-item>
+                <mat-icon mat-list-icon>school</mat-icon>
+                <span mat-line>
+                    <h3>Education</h3>
+                </span>
+            </mat-list-item>
+            <mat-table [dataSource]="educationInfo" *ngIf="educationInfo">
+                <ng-container matColumnDef="what">
+                    <mat-cell *matCellDef="let entry">
+                        {{ entry.what }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="where">
+                    <mat-cell *matCellDef="let entry">
+                        {{ entry.where }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fromto">
+                    <mat-cell *matCellDef="let entry">
+                        {{ formatDate(entry.from) + " - " + formatDate(entry.to) }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <!-- Experience -->
+            <mat-list-item>
+                <mat-icon mat-list-icon>work</mat-icon>
+                <span mat-line>
+                    <h3>Work experience</h3>
+                </span>
+            </mat-list-item>
+            <mat-table [dataSource]="experienceInfo" *ngIf="experienceInfo">
+                <ng-container matColumnDef="what">
+                    <mat-cell *matCellDef="let entry">
+                        {{ entry.what }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="where">
+                    <mat-cell *matCellDef="let entry">
+                        {{ entry.where }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fromto">
+                    <mat-cell *matCellDef="let entry">
+                        {{ formatDate(entry.from) + " - " + formatDate(entry.to) }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <!-- Quote -->
+            <mat-list-item>
+                <mat-icon mat-list-icon matTooltip="Click for a new quote" (click)="newQuote()">format_quote</mat-icon>
+                <span mat-line>
+                    <h3>Random quote</h3>
+                </span>
+            </mat-list-item>
+            <blockquote *ngIf="quote">
+                <q>{{ quote.quote }}</q>
+                <span>{{ " - " + quote.author }}</span>
+            </blockquote>
+        </mat-list>
     </mat-card-content>
 </mat-card>

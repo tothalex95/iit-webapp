@@ -1,9 +1,11 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
 
+import { MaterialDesignModule } from "../common/material-design.module";
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
-import { MaterialDesignModule } from "../common/material-design.module";
+import { HomeService } from "./home.service";
+
 
 @NgModule({
     imports: [
@@ -13,6 +15,9 @@ import { MaterialDesignModule } from "../common/material-design.module";
     ],
     declarations: [
         HomeComponent
+    ],
+    providers: [
+        HomeService
     ]
 })
 export class HomeModule { }

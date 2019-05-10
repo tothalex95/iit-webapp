@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit {
     }
 
     newQuote(): void {
-        this.homeService.getRandomQuote().subscribe((quote: Quote) => {
-            this.quote = quote;
+        this.homeService.getRandomQuote().subscribe((quotes: Array<Quote>) => {
+            this.quote = quotes[Math.trunc(Math.random() * quotes.length)];
         });
     }
 }

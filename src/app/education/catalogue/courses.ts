@@ -2,6 +2,11 @@ import { Course } from "./course";
 
 export const COURSES: Course[] = [
     {
+        title: "Operating Systems 2018/19 II.",
+        subject: "os",
+        year: 2019
+    },
+    {
         title: "Computer Architectures 2018/19 I.",
         subject: "arch",
         year: 2018

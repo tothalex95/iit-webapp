@@ -4,6 +4,9 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 
+import { saveAs } from "file-saver";
+import { StringBuilder } from "typescript-string-operations";
+
 import { CatalogueEntry } from "./catalogue-entry";
 import { CatalogueService } from "./catalogue.service";
 import { Course } from "./course";
@@ -37,6 +40,9 @@ export class CatalogueComponent {
 
     catalogue: MatTableDataSource<CatalogueEntry>;
 
+    private catalogueEntries: Array<CatalogueEntry>;
+    private course: Course;
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     @ViewChild(MatSort) sort: MatSort;
@@ -47,6 +53,9 @@ export class CatalogueComponent {
         this.catalogueService.getCatalogue(course.subject, course.year)
             .subscribe((catalogue: Array<CatalogueEntry>) => {
                 this.catalogue = new MatTableDataSource(catalogue);
+
+                this.catalogueEntries = catalogue;
+                this.course = course;
 
                 this.catalogue.filterPredicate = (catalogueEntry: CatalogueEntry, neptunCode: string) => this.filter(catalogueEntry);
 
@@ -82,6 +91,25 @@ export class CatalogueComponent {
         };
 
         this.catalogue.filter = "*";
+    }
+
+    exportData(): void {
+        if (!this.catalogueEntries || !this.course) {
+            alert("Select course!");
+            return;
+        }
+
+        let data = new StringBuilder();
+        
+        this.catalogueEntries.forEach(entry => {
+            data.AppendFormat("{0}\t{1}\t{2}\n", entry.neptunCode, this.getPracticeResult(entry) ? "+" : "-", entry.plusPoint ? entry.plusPoint.toString() : "");
+        });
+
+        let blob = new Blob([data.ToString()], {
+            type:"text/plain"
+        });
+
+        saveAs(blob, `${this.course.subject}_${this.course.year}.txt`);
     }
 
     getPresenceResult(catalogueEntry: CatalogueEntry): number {
